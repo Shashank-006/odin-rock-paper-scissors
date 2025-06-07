@@ -13,7 +13,7 @@ function getHumanChoice() {
     let val = "";
     let lowerVal = "";
     while(lowerVal != "paper" && lowerVal != "scissors" && lowerVal != "rock") {
-	    val = prompt("Try again: what option do you want to pick? (rock, paper, scissors)");
+	    val = prompt("What option do you want to pick? (rock, paper, scissors)");
         lowerVal = val.toLowerCase();
     }
     return val;
