@@ -1,3 +1,14 @@
+function makeButton(option) {
+    const button = document.createElement("button");
+    button.textContent = option;
+    document.body.appendChild(button);
+    button.addEventListener("click", () => playRound(option, getComputerChoice()));
+}
+
+const rockButton = makeButton("rock");
+const scissorsButton = makeButton("scissors");
+const paperButton = makeButton("paper");
+
 function getComputerChoice() {
     const val = Math.random();
     if(val < (1 / 3)) {
@@ -58,9 +69,6 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function playGame() {
-    while(computerScore < 5 && humanScore < 5) {
-        playRound(getHumanChoice(), getComputerChoice());
-        console.log(`Score: \nHuman: ${humanScore} Computer: ${computerScore}`);
-    }
+    
 }
 playGame();
