@@ -1,13 +1,19 @@
 function makeButton(option) {
     const button = document.createElement("button");
     button.textContent = option;
-    document.body.appendChild(button);
+    buttonContainer.appendChild(button);
     button.addEventListener("click", () => playRound(option, getComputerChoice()));
+    return button;
 }
+
+const buttonContainer = document.createElement("div");
+buttonContainer.setAttribute("style", "display: flex; justify-content: space-between; margin: 30px 20% 0px");
+document.body.appendChild(buttonContainer);
 
 const rockButton = makeButton("rock");
 const scissorsButton = makeButton("scissors");
 const paperButton = makeButton("paper");
+
 
 function getComputerChoice() {
     const val = Math.random();
