@@ -6,6 +6,7 @@ function makeButton(option) {
     return button;
 }
 
+document.body.setAttribute("style","font-family: Roboto");
 const buttonContainer = document.createElement("div");
 buttonContainer.setAttribute("style", "display: flex; justify-content: space-between; margin: 30px 20% 0px");
 document.body.appendChild(buttonContainer);
@@ -14,13 +15,18 @@ const rockButton = makeButton("rock");
 const scissorsButton = makeButton("scissors");
 const paperButton = makeButton("paper");
 
+const buttons = buttonContainer.querySelectorAll("*");
+
+buttons.forEach(e => e.setAttribute("style", "width: 160px; height: 80px; border-radius: 8px; font-weight: bold; font-size: 16px"))
+
 const results = document.createElement("div");
-document.body.appendChild(results);
-results.setAttribute("style", "text-align: center");
+document.body.insertBefore(results, buttonContainer);
+results.style.cssText = "text-align: center; padding: 16px 0 80px; font-size: 20px";
+results.textContent = "Score: Human: 0 Computer: 0";
 
 const winner = document.createElement("div");
 document.body.appendChild(winner);
-winner.setAttribute("style", "font-size: 24px; text-align: center");
+winner.setAttribute("style", "font-size: 24px; text-align: center; margin: 50px;");
 
 
 function getComputerChoice() {
