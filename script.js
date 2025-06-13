@@ -14,6 +14,14 @@ const rockButton = makeButton("rock");
 const scissorsButton = makeButton("scissors");
 const paperButton = makeButton("paper");
 
+const results = document.createElement("div");
+document.body.appendChild(results);
+results.setAttribute("style", "text-align: center");
+
+const winner = document.createElement("div");
+document.body.appendChild(winner);
+winner.setAttribute("style", "font-size: 24px; text-align: center");
+
 
 function getComputerChoice() {
     const val = Math.random();
@@ -62,16 +70,32 @@ function playRound(humanChoice, computerChoice) {
 
     if(isTie) {
         console.log("Tie!");
-        return;
     } else if(isHumanWinner) {
         console.log("Human Wins!");
         humanScore++;
-        return;
+        if(humanScore === 5) {
+            winner.textContent = `Human Wins! (${humanScore} - ${computerScore})`;
+            humanScore = 0;
+            computerScore = 0;
+        }
     } else {
         console.log("Computer Wins!");
         computerScore++;
-        return;
+        if(computerScore === 5) {
+            winner.textContent = `Computer Wins! (${computerScore} - ${humanScore})`;
+            humanScore = 0;
+            computerScore = 0;
+        }
     }
+
+    if(computerScore === 5) {
+        winner.textContent = "Computer Wins!";
+    } else if(humanScore === 5) {
+        winner.textContent = "Human Wins!";
+        humanScore === 5;
+    }
+
+    results.textContent = `Score: Human: ${humanScore} Computer: ${computerScore}`;
 }
 
 function playGame() {
